@@ -1,0 +1,584 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+   ========================================================================== */
+:root {
+    --color-fondo: #F5F7F0;
+    --color-fondo-alt: #EAF3E8;
+    --color-blanco: #FFFFFF;
+    --color-texto: #293D32;
+    --color-titulos: #174F3D;
+    --color-primario: #28744D;
+    --color-primario-hover: #174F3D;
+    --color-borde: #D2E3D2;
+    --color-pie: #174F3D;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Tipografías y Encabezados */
+h1,
+h2,
+h3 {
+    color: var(--color-titulos);
+}
+
+h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--color-primario);
+}
+
+/* Enlace de accesibilidad para saltar navegación */
+.saltar {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--color-primario);
+    color: white;
+    padding: 0.5rem 1rem;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+.saltar:focus {
+    top: 0;
+}
+
+/* Etiqueta superior sutil */
+.etiqueta {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: var(--color-primario);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.nota {
+    font-size: 0.85rem;
+    color: #556b5d;
+    margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   2. ESTRUCTURA Y CONTENEDORES
+   ========================================================================== */
+.contenedor {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.seccion {
+    padding: 3.5rem 0;
+    scroll-margin-top: 80px;
+}
+
+.fondo {
+    background-color: var(--color-fondo-alt);
+}
+
+/* Disposición en 2 columnas */
+.dos-columnas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+/* ==========================================================================
+   3. ENCABEZADO Y NAVEGACIÓN (STICKY & DROPDOWN)
+   ========================================================================== */
+.cabecera {
+    position: sticky;
+    top: 0;
+    background-color: var(--color-blanco);
+    border-bottom: 1px solid var(--color-borde);
+    z-index: 100;
+}
+
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-titulos);
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+.menu a {
+    text-decoration: none;
+    color: var(--color-texto);
+    font-weight: 500;
+}
+
+.menu a:hover {
+    color: var(--color-primario);
+}
+
+/* Menú desplegable con HTML <details> */
+.desplegable {
+    position: relative;
+    cursor: pointer;
+}
+
+.desplegable summary {
+    font-weight: 500;
+    list-style: none;
+}
+
+.desplegable summary::-webkit-details-marker {
+    display: none;
+}
+
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0.5rem 0;
+    min-width: 180px;
+    z-index: 200;
+}
+
+.submenu li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+}
+
+.submenu li a:hover {
+    background-color: var(--color-fondo-alt);
+}
+
+/* ==========================================================================
+   4. IMÁGENES Y GALERÍAS
+   ========================================================================== */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.foto {
+    width: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.postal {
+    margin: 0;
+}
+
+.postal figcaption {
+    font-size: 0.85rem;
+    font-style: italic;
+    margin-top: 0.5rem;
+    color: #4a5d52;
+}
+
+/* Galería en Rejilla */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.galeria figure {
+    margin: 0;
+}
+
+.galeria img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.galeria figcaption {
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+}
+
+/* ==========================================================================
+   5. TARJETAS Y COMPONENTES
+   ========================================================================== */
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.tarjeta {
+    background: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tarjeta .numero {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--color-primario);
+    margin-bottom: 0.5rem;
+}
+
+.tarjeta blockquote {
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   6. ORIENTADOR INTERACTIVO (RADIO BUTTONS)
+   ========================================================================== */
+.orientador {
+    border: 1px solid var(--color-borde);
+    border-radius: 15px;
+    padding: 1.5rem;
+    background: var(--color-blanco);
+    margin-top: 1.5rem;
+}
+
+.orientador legend {
+    font-weight: bold;
+    padding: 0 0.5rem;
+    color: var(--color-titulos);
+}
+
+.orientador input[type="radio"] {
+    display: none;
+    /* Ocultamos el radio por defecto para estilizar etiquetas */
+}
+
+.orientador label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--color-fondo);
+    border: 1px solid var(--color-borde);
+    border-radius: 20px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.orientador input[type="radio"]:checked+label {
+    background: var(--color-primario);
+    color: var(--color-blanco);
+    border-color: var(--color-primario);
+}
+
+.resultados {
+    background: var(--color-fondo-alt);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+}
+
+.respuesta {
+    display: none;
+}
+
+/* Control visual de los paneles por CSS según la opción seleccionada */
+#accion1:checked~.resultados .accion1,
+#accion2:checked~.resultados .accion2,
+#accion3:checked~.resultados .accion3,
+#mochila:checked~.resultados .mochila,
+#libreta:checked~.resultados .libreta,
+#abrigo:checked~.resultados .abrigo {
+    display: block;
+}
+
+/* ==========================================================================
+   7. BOTONES Y FORMULARIOS
+   ========================================================================== */
+.boton {
+    display: inline-block;
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.boton:hover {
+    background-color: var(--color-primario-hover);
+    color: var(--color-blanco);
+}
+
+.enlace {
+    display: inline-block;
+    margin-left: 1rem;
+    text-decoration: underline;
+    color: var(--color-primario);
+}
+
+.formulario {
+    background: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: 15px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.formulario label {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.formulario input[type="text"],
+.formulario input[type="email"],
+.formulario select,
+.formulario textarea {
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 0.8rem;
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+.formulario input[type="checkbox"] {
+    accent-color: var(--color-primario);
+    margin-right: 0.4rem;
+}
+
+/* Estilos de validación JS */
+.formulario input.error,
+.formulario textarea.error {
+    border: 2px solid #b00020;
+}
+
+.aviso {
+    margin: 0.5rem 0;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.aviso.error-texto {
+    color: #b00020;
+}
+
+.aviso.ok {
+    color: #1b6e2d;
+}
+
+/* Reproductor de Video (recursos.html) */
+.video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: 12px;
+}
+
+/* ==========================================================================
+   8. PIE DE PÁGINA
+   ========================================================================== */
+.pie {
+    background: var(--color-pie);
+    color: var(--color-blanco);
+    padding: 3rem 0;
+}
+
+.pie h2,
+.pie h3 {
+    color: var(--color-blanco);
+    margin-bottom: 0.5rem;
+}
+
+.pie a {
+    color: var(--color-blanco);
+}
+
+.pie .redes {
+    display: flex;
+    gap: 1.5rem;
+    margin: 1.2rem 0;
+}
+
+.pie .redes a {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   9. ADAPTABILIDAD (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .dos-columnas {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .barra {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .seccion {
+        padding: 2rem 0;
+    }
+
+    .formulario {
+        padding: 1.2rem;
+    }
+
+    .enlace {
+        display: block;
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Estilos adicionales para los testimonios dinamicos */
+.estrellas {
+    color: #f39c12;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.tarjeta-nueva {
+    border-left: 4px solid var(--color-primario);
+    animation: aparecer 0.5s ease-in-out;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   10. ESTILOS DE US-TEST-003: GRÁFICO DE BARRAS RESPONSIVE
+   ========================================================================== */
+.grafico-contenedor {
+    margin-top: 2.5rem;
+    background: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.grafico-barras {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+}
+
+.barra-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.barra-info {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: var(--color-titulos);
+}
+
+.barra-fondo {
+    background: var(--color-fondo-alt);
+    border-radius: 10px;
+    height: 22px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.barra-relleno {
+    background: linear-gradient(90deg, var(--color-primario), #174f3d);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.6s ease-in-out;
+}
